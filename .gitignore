@@ -1,2 +1,11 @@
 .env
 /node_modules
+
+1st :51 {isActive:true}
+2nd:54 {age:{$gt:26}}
+3rd:19 {$and:[{"age":{$gt:26}},{"age":{"$lte":30}}]}
+4th:66 {$or:[{"eyeColor":"blue"},{"eyeColor":"brown"}]}
+5th:66{eyeColor:{$ne:"green"}}
+6th:35{ $nor: [ { eyeColor: "green"}, { eyeColor: "blue" } ]  }
+7th Filter :1 { company :"FITCORE"}
+Project : {email:1} 
