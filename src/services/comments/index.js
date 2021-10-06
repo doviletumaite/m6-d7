@@ -9,15 +9,15 @@ commentsRouter.post("/:id/comments", async (req, res, next) =>{
     try {
         const post = await postsModel.findById(req.params.id)
         if (post){
-            const comment =  req.body.text
+            const comment =  req.body
             console.log("comment:",comment)
-            const commentToAdd = {...comment}
+            const commentToAdd = {...comment }
           const newComment = await postsModel.findByIdAndUpdate(
               req.params.id,
-              {$push : {commentSchema: commentToAdd}},
+              {$push : {commentSchema: commentToAdd }},
               {new: true}
           )
-          
+          console.log("comment to add:", commentToAdd)
           if (newComment){
               res.send(newComment)
           } 
