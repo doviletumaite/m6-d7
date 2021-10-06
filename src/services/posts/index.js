@@ -1,5 +1,7 @@
 import express from "express"
+import createHttpError from "http-errors"
 import postsModel from "./schema.js"
+// import commentModel from "../comments/schema.js"
 const postsRouter = express.Router()
 
 postsRouter.get("/", async (req, res, next) => {
@@ -62,4 +64,5 @@ postsRouter.delete("/:id", async (req, res, next) => {
         next(error)
     }
 })
+
 export default postsRouter

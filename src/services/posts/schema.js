@@ -2,6 +2,12 @@ import mongoose from "mongoose"
 
 const { Schema, model } = mongoose
 
+export const commentsSchema = new Schema({
+text: {type:String}
+},
+{
+    timestamps:true
+})
 const postSchema = new Schema(
     {
       category: {type: String, required: true },
@@ -15,7 +21,8 @@ const postSchema = new Schema(
           name: {type: String, required:true},
           avatar: {type:String, required: true}
       },
-      content: {type: String, required: true}
+      content: {type: String, required: true},
+      commentsSchema: []
     },
     {
         timestamps: true,
@@ -23,4 +30,5 @@ const postSchema = new Schema(
 )
 
 export default model("post", postSchema)
+
 
