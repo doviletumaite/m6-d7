@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const { Schema, model } = mongoose
- const commentsSchema = new Schema({
+export  const commentsSchema = new Schema({
     text: {type:String}
     },
     {
