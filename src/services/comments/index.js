@@ -28,4 +28,25 @@ commentsRouter.post("/:id/comments", async (req, res, next) =>{
         next(error)
     }
 })
+commentsRouter.get("/:id/comments", async(req, res, next) => {
+    try {
+        
+    } catch (error) {
+        next(error)  
+    }
+})
+commentsRouter.delete("/:id/comments/:id", async(req, res, next) => {
+    try {
+        
+    } catch (error) {
+        next(error)  
+    }
+})
+commentsRouter.put("/:id/comments/:id", async(req, res, next) => {
+    try {
+        
+    } catch (error) {
+        next(error)  
+    }
+})
 export default commentsRouter
