@@ -1,7 +1,7 @@
 import express from "express"
 import createHttpError from "http-errors"
 import postsModel from "../posts/schema.js"
-
+import commentModel from "./schema.js"
 
 const commentsRouter = express.Router()
 
@@ -9,9 +9,9 @@ commentsRouter.post("/:id/comments", async (req, res, next) =>{
     try {
         const post = await postsModel.findById(req.params.id)
         if (post){
-            const comment =  req.body
+            const comment = await new commentModel(req.body)
             console.log("comment:",comment)
-            const commentToAdd = {...comment }
+            const commentToAdd = {...comment.toObject() }
           const newComment = await postsModel.findByIdAndUpdate(
               req.params.id,
               {$push : {commentSchema: commentToAdd }},
