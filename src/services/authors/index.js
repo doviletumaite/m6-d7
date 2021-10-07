@@ -61,4 +61,25 @@ authorsRouter.put("/:id", async (req,res, next) => {
     }
 })
 
+authorsRouter.post("/:id/posts", async (req, res, next)=> {
+    try {
+        const author = await authorsModel.findById(req.params.id)  
+        const postID = req.body.postId
+        const post = await postsModel.findById(postID)
+        const newPost = {... post.toObject(), posts: req.body.posts} 
+        const thatPost = await authorsModel.findOneAndUpdate(
+            {posts: req.params.id, status: "active"},
+            {$push: {posts: newPost}},
+            {
+                new: true,
+                upsert: true
+            }
+        )
+        res.send(thatPost)
+
+    } catch (error) {
+        next(error)
+    }
+})
+
 export default authorsRouter

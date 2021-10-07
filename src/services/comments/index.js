@@ -19,7 +19,7 @@ commentsRouter.post("/:id/comments", async (req, res, next) => {
       );
     }
   } catch (error) {
-    next(error);
+    next(error)
   }
 });
 commentsRouter.get("/:id/comments", async (req, res, next) => {
