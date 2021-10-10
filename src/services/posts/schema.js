@@ -13,8 +13,7 @@ const postSchema = new Schema(
           unit: { type: String, required: true}
       },
       author: {
-          name: {type: String, required:true},
-          avatar: {type:String, required: true}
+        type: mongoose.Schema.Types.ObjectId, required: true, ref: "author"
       },
       content: {type: String, required: true},
       comments: [commentsSchema]

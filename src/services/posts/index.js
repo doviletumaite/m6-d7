@@ -6,7 +6,10 @@ const postsRouter = express.Router()
 
 postsRouter.get("/", async (req, res, next) => {
     try {
-        const posts = await postsModel.find()
+        const posts = await postsModel.find({}).populate({
+            path: "author",
+            select: "name surname avatar",
+        })
         res.send(posts)
     } catch (error) {
         next(error)
